@@ -13,9 +13,9 @@ Stripe = "Austria, Australia, Belgium, Canada, Germany, Denmark, Spain, France, 
 MercadoPago = "Argentina, Brazil, Colombia, Mexico, Venezuela, Chile"
 Wirecard = "Andorra, Austria, Belgium, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Gibraltar, Greece, Hungary, Iceland, Ireland, Isle of Man, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Monaco, Netherlands, Norway, Poland, Portugal, Romania, San Marino, Slovakia, Slovenia, Spain, Sweden, Switzerland, Turkey, UK, Vatican City"
 PagSeguro = ["Brazil"]
-Other = ["Other Country"]
+Offline = ["Other Country"]
 
-paymentmethods = [PayPal,Moolah,Stripe,MercadoPago,Wirecard,PagSeguro,Other]
+paymentmethods = [PayPal,Moolah,Stripe,MercadoPago,Wirecard,PagSeguro,Offline]
 #convert all strings to lists
 PayPal = paymentmethods[0].split(",")
 Moolah = paymentmethods[1].split(", ")
@@ -24,13 +24,13 @@ MercadoPago = paymentmethods[3].split(", ")
 Wirecard = paymentmethods[4].split(", ")
 
 #this part generates a list of all the countries we support for looping
-countries = PayPal+Moolah+Stripe+MercadoPago+Wirecard+PagSeguro+Other
+countries = PayPal+Moolah+Stripe+MercadoPago+Wirecard+PagSeguro+Offline
 countries = sorted(countries)
-Other = countries
+Offline = countries
 #This part makes a paymentmethods list 
 
 #this line is for the HTML table labels - perhaps I should put in links to each payment method
-paymentmethodsnames = ["PayPal","Moolah","Stripe","MercadoPago","Wirecard","PagSeguro","Other"]
+paymentmethodsnames = ["PayPal","Moolah","Stripe","MercadoPago","Wirecard","PagSeguro","Offline"]
 
 #this section generates the list of countries
 country = []
@@ -43,7 +43,7 @@ for i in range(0,len(countries)):
 x=0
 z=0
 print("<html>")
-print("Payment Methods By Country <br><br>")
+print("Select a country to view the supported payment methods: <br><br>")
 #generates the dropdown menu of all the countries we support
 print('<select id="selectedcountry" onchange="optionCheck()">')
 for z in range(0,len(country)):
@@ -51,20 +51,30 @@ for z in range(0,len(country)):
 print('</select><br><br>')
 
 print("")
-
+print("""<style>
+table{
+    width:100%;
+    border:1px solid black;
+    font-size: 105%;
+}
+td {
+    text-align: center;
+    border:1px solid black;
+}
+</style>""")
 #current approach: hide everything till the select menu reveals it
 #generates a bunch of not displayed tables for each country
 for z in range(0,len(country)):#each country
-    print('<table style="display:none" border="1" id="',z,'">') #use single and double quotes together to escape them
+    print('<table style="display:none;" id="',z,'">') #use single and double quotes together to escape them
     print('<th>',country[z],'</th>')
     print("<tr>")
     for x in range(0,len(paymentmethodsnames)):#each payment method
-        print("<td>",paymentmethodsnames[x],"</td>") #print current payment
-    print("</tr><tr>")
-    for x in range(0,len(paymentmethodsnames)):
+        print("<td>",paymentmethodsnames[x],"<br>","Supported" if country[z] in paymentmethods[x] else "Not Supported","</td>") #print current payment
+    print("</tr>")#<tr>")
+    #for x in range(0,len(paymentmethodsnames)):
     	#this section should be modified to show check marks or links - perhaps I should not even display unsupported payment methods
-        print("<td>","Available" if country[z] in paymentmethods[x] else "Not Available","</td>")
-    print("</tr>")
+     #   print("<td>","Supported" if country[z] in paymentmethods[x] else "Not Supported","</td>")
+    #print("</tr>")
     print("</table>")
 
 #reveal table using javascript - brute force style
