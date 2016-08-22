@@ -33,8 +33,8 @@ for i in range(0,len(countries)):
 paymentmethods[6] = countries #adds every country to offline payment section
 
 #This following part makes a paymentmethods list 
-#this line is for the HTML table labels - perhaps I should put in links to each payment method
-paymentmethodsnames = ["PayPal","Moolah","Stripe","MercadoPago","Wirecard","PagSeguro","Offline"]
+#this line is for the HTML table labels - includes links to each payment method
+paymentmethodsnames = ['<a href="https://www.wix.com/support/html5/article/setting-up-paypal-payments-in-wix-stores">PayPal</a>','<a href="https://www.wix.com/support/html5/article/setting-up-moolah-authorizenet-as-a-payment-gateway-in-wix-stores">Moolah</a>','<a href="https://www.wix.com/support/html5/article/setting-up-stripe-as-a-payment-gateway-in-wix-stores">Stripe</a>','<a href="https://www.wix.com/support/html5/article/setting-up-mercadopago-as-a-payment-method-in-wix-stores">MercadoPago</a>','<a href="https://www.wix.com/support/html5/article/setting-up-wirecard-as-a-payment-gateway-in-wix-stores">Wirecard</a>','<a href="https://www.wix.com/support/html5/article/setting-up-pagseguro-as-a-payment-gateway-in-wix-stores">PagSeguro</a>','<a href="https://www.wix.com/support/html5/article/setting-up-offline-payments-in-wix-stores">Offline</a>']
 
 
 ###Debug the offline payments section
