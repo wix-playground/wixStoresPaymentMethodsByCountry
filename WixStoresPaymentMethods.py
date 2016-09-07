@@ -45,8 +45,8 @@ paymentmethodsnames = ['<a href="https://www.wix.com/support/html5/article/setti
 x=0
 z=0
 with open("wspm.html", "w") as wspm:
-    print("<html>",file=wspm)
-    print("Select a country to view the supported payment methods: <br><br>",file=wspm)
+    print('<html><body><style>body{font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}</style>',file=wspm)
+    print("Please select your country below to see our supported payment methods for Wix Stores: <br><br>",file=wspm)
     #generates the dropdown menu of all the countries we support
     print('<select id="selectedcountry" onchange="optionCheck()">',file=wspm)
     for z in range(0,len(country)):
@@ -56,13 +56,15 @@ with open("wspm.html", "w") as wspm:
     print("",file=wspm)
     print("""<style>
     table{
-        width:100%;
-        border:1px solid black;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 100%;
     }
     td {
         text-align: center;
-        border:1px solid black;
+        padding: 5px;
+        border-radius: 10px;
+        border:1px solid #3ba561;
+        background: #65c888;
     }
     </style>""",file=wspm)
     #current approach: hide everything till the select menu reveals it
@@ -88,5 +90,5 @@ with open("wspm.html", "w") as wspm:
             }
     </script>
     """,file=wspm)
-    print("</html>",file=wspm)
+    print("</body></html>",file=wspm)
 
