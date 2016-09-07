@@ -90,5 +90,5 @@ with open("wspm.html", "w") as wspm:
             }
     </script>
     """,file=wspm)
-    print("</body></html>",file=wspm)
+    print("<br>Third-party restrictions and limitations may apply.</body></html>",file=wspm)
 
