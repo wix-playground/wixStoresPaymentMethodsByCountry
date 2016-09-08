@@ -34,7 +34,7 @@ for i in range(0,len(countries)):
     if countries[i] not in country:
         country.append(countries[i])
 
-paymentmethods[6] = countries #adds every country to offline payment section
+paymentmethods[7] = countries #adds every country to offline payment section
 
 #This following part makes a paymentmethods list 
 #this line is for the HTML table labels - includes links to each payment method
