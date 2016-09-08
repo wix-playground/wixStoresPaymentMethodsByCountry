@@ -10,9 +10,10 @@ Stripe = "Austria, Australia, Belgium, Canada, Germany, Denmark, Spain, France, 
 MercadoPago = "Argentina, Brazil, Colombia, Mexico, Venezuela, Chile"
 Wirecard = "Andorra, Austria, Belgium, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Gibraltar, Greece, Hungary, Iceland, Ireland, Isle of Man, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Monaco, Netherlands, Norway, Poland, Portugal, Romania, San Marino, Slovakia, Slovenia, Spain, Sweden, Switzerland, Turkey, United Kingdom, Vatican City"
 PagSeguro = ['Brazil']
+Leumi = ['Israel']
 Offline = ['Other Country']#["Other Country"]
 
-paymentmethods = [PayPal,Moolah,Stripe,MercadoPago,Wirecard,PagSeguro,Offline]
+paymentmethods = [PayPal,Moolah,Stripe,MercadoPago,Wirecard,PagSeguro,Leumi,Offline]
 #convert all strings to lists
 PayPal = paymentmethods[0].split(",")
 Moolah = paymentmethods[1].split(", ")
@@ -20,10 +21,11 @@ Stripe = paymentmethods[2].split(", ")
 MercadoPago = paymentmethods[3].split(", ")
 Wirecard = paymentmethods[4].split(", ")
 PagSeguro = paymentmethods[5]
-Offline = paymentmethods[6]
+Leumi = paymentmethods[6]
+Offline = paymentmethods[7]
 
 #this part generates a list of all the countries we support for looping
-countries = PayPal+Moolah+Stripe+MercadoPago+Wirecard+PagSeguro
+countries = PayPal+Moolah+Stripe+MercadoPago+Wirecard+PagSeguro+Leumi
 countries = sorted(countries)
 #this code prevents duplicates
 country = []
@@ -36,13 +38,7 @@ paymentmethods[6] = countries #adds every country to offline payment section
 
 #This following part makes a paymentmethods list 
 #this line is for the HTML table labels - includes links to each payment method
-paymentmethodsnames = ['<a href="https://www.wix.com/support/html5/article/setting-up-paypal-payments-in-wix-stores">PayPal</a>','<a href="https://www.wix.com/support/html5/article/setting-up-moolah-authorizenet-as-a-payment-gateway-in-wix-stores">Moolah</a>','<a href="https://www.wix.com/support/html5/article/setting-up-stripe-as-a-payment-gateway-in-wix-stores">Stripe</a>','<a href="https://www.wix.com/support/html5/article/setting-up-mercadopago-as-a-payment-method-in-wix-stores">MercadoPago</a>','<a href="https://www.wix.com/support/html5/article/setting-up-wirecard-as-a-payment-gateway-in-wix-stores">Wirecard</a>','<a href="https://www.wix.com/support/html5/article/setting-up-pagseguro-as-a-payment-gateway-in-wix-stores">PagSeguro</a>','<a href="https://www.wix.com/support/html5/article/setting-up-offline-payments-in-wix-stores">Offline</a>']
-
-
-###Debug the offline payments section
-##print("Supported" if country[68] in paymentmethods[6] else "no")
-##print(country[68])
-##print(paymentmethods[6])
+paymentmethodsnames = ['<a href="https://www.wix.com/support/html5/article/setting-up-paypal-payments-in-wix-stores">PayPal</a>','<a href="https://www.wix.com/support/html5/article/setting-up-moolah-authorizenet-as-a-payment-gateway-in-wix-stores">Moolah</a>','<a href="https://www.wix.com/support/html5/article/setting-up-stripe-as-a-payment-gateway-in-wix-stores">Stripe</a>','<a href="https://www.wix.com/support/html5/article/setting-up-mercadopago-as-a-payment-method-in-wix-stores">MercadoPago</a>','<a href="https://www.wix.com/support/html5/article/setting-up-wirecard-as-a-payment-gateway-in-wix-stores">Wirecard</a>','<a href="https://www.wix.com/support/html5/article/setting-up-pagseguro-as-a-payment-gateway-in-wix-stores">PagSeguro</a>','<a href="https://www.wix.com/support/html5/article/setting-up-leumi-card-as-a-payment-gateway-for-wix-stores">Leumi</a>','<a href="https://www.wix.com/support/html5/article/setting-up-offline-payments-in-wix-stores">Offline</a>']
 
 x=0
 z=0
@@ -78,7 +74,7 @@ with open("wspm.html", "w") as wspm:
     #generates a bunch of not displayed tables for each country
     for z in range(0,len(country)):#each country
         print('<table style="display:none;" id="',z,'">',file=wspm) #use single and double quotes together to escape them
-        print('<th colspan="1">',country[z],'</th>',file=wspm) #print country name
+        print('<th colspan="2">',country[z],'</th>',file=wspm) #print country name
         #print("<br>",file=wspm)
         for x in range(0,len(paymentmethodsnames)):#each payment method
             if country[z] in paymentmethods[x]:
@@ -99,5 +95,5 @@ with open("wspm.html", "w") as wspm:
             }
     </script>
     """,file=wspm)
-    print("<br>Third-party restrictions and limitations may apply.</body></html>",file=wspm)
+    print("<br>Third-party restrictions and limitations may apply.<br>If you don't see your country, or you have any feedback or questions, contact us</body></html>",file=wspm)
 
