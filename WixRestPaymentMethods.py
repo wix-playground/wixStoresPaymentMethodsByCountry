@@ -55,7 +55,7 @@ x=0
 z=0
 with open("wspmrest.html", "w") as wspm:
     print('<html><body><style>body{font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}</style>',file=wspm)
-    print("Please select your country below to see our supported payment methods for Wix Stores: <br><br>",file=wspm)
+    print("Please select your country below to see our supported payment methods for Wix Restaurants: <br><br>",file=wspm)
     #generates the dropdown menu of all the countries we support
     print('<select id="selectedcountry" onchange="optionCheck()">',file=wspm)
     for z in range(0,len(country)):
