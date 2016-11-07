@@ -13,7 +13,7 @@ Wirecard = ['Null']
 Square = "United States, Canada"
 PagSeguro = ['Brazil']
 Leumi = ['Israel']
-Offline = ['Other Country']#["Other Country"]
+Offline = "Turkey,Other Country"
 
 paymentmethods = [PayPal,Moolah,Stripe,MercadoPago,Wirecard,Square,PagSeguro,Leumi,Offline]
 
@@ -26,10 +26,10 @@ Wirecard = paymentmethods[4]
 Square = paymentmethods[5].split(", ")
 PagSeguro = paymentmethods[6]
 Leumi = paymentmethods[7]
-Offline = paymentmethods[8]
+Offline = paymentmethods[8].split(",")
 
 #this part generates a list of all the countries we support for looping
-countries = PayPal+Moolah+Stripe+MercadoPago+Wirecard+Square+PagSeguro+Leumi
+countries = PayPal+Moolah+Stripe+MercadoPago+Wirecard+Square+PagSeguro+Leumi+Offline
 countries = sorted(countries)
 #this code prevents duplicates
 country = []
@@ -39,7 +39,6 @@ for i in range(0,len(countries)):
         country.append(countries[i])
 
 paymentmethods[8] = countries #adds every country to offline payment section
-
 
 paymentmethodsnames = ['<a href="https://www.wix.com/support/html5/article/setting-up-paypal-payments-in-wix-stores">PayPal</a>','<a href="https://www.wix.com/support/html5/article/setting-up-moolah-authorizenet-as-a-payment-gateway-in-wix-stores">Moolah</a>','<a href="https://www.wix.com/support/html5/article/setting-up-stripe-as-a-payment-gateway-in-wix-stores">Stripe</a>','<a href="https://www.wix.com/support/html5/article/setting-up-mercadopago-as-a-payment-method-in-wix-stores">MercadoPago</a>','Wirecard not','<a href="https://www.wix.com/support/html5/article/setting-up-square-as-a-payment-gateway-in-wix-stores">Square</a>','<a href="https://www.wix.com/support/html5/article/setting-up-pagseguro-as-a-payment-gateway-in-wix-stores">PagSeguro</a>','<a href="https://www.wix.com/support/html5/article/setting-up-leumi-card-as-a-payment-gateway-for-wix-stores">Leumi</a>','<a href="https://www.wix.com/support/html5/article/setting-up-offline-payments-in-wix-stores">Offline</a>']
 
