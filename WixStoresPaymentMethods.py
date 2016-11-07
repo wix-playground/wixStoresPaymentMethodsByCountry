@@ -8,7 +8,8 @@ PayPal = "Algeria,Angola,Benin,Botswana,Burkina Faso,Burundi,Cameroon,Cape Verde
 Moolah = "Andorra, Austria, Belgium, Bulgaria, Cyprus, Czech Republic, Finland, France, Germany, Gibraltar, Greece, Hungary, Ireland, Italy, Liectenstein, Luxembourg, Malta, Monaco, Netherlands, Norway, Poland, Portugal, Romania, San Marino, Slovakia, Slovenia, Spain, Sweden, Switzerland, Vatican City, United States, Canada, United Kingdom, Australia"
 Stripe = "Austria, Australia, Belgium, Canada, Germany, Denmark, Spain, France, United Kingdom, Ireland, Italy, Luxembourg, Netherlands, Norway, Sweden, United States, Japan"
 MercadoPago = "Argentina, Brazil, Colombia, Mexico, Venezuela, Chile"
-Wirecard = "Andorra, Austria, Belgium, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Gibraltar, Greece, Hungary, Iceland, Ireland, Isle of Man, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Monaco, Netherlands, Norway, Poland, Portugal, Romania, San Marino, Slovakia, Slovenia, Spain, Sweden, Switzerland, Turkey, United Kingdom, Vatican City"
+#Wirecard = "Andorra, Austria, Belgium, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Gibraltar, Greece, Hungary, Iceland, Ireland, Isle of Man, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Monaco, Netherlands, Norway, Poland, Portugal, Romania, San Marino, Slovakia, Slovenia, Spain, Sweden, Switzerland, Turkey, United Kingdom, Vatican City"
+Wirecard = ['Null']
 Square = "United States, Canada"
 PagSeguro = ['Brazil']
 Leumi = ['Israel']
@@ -21,7 +22,7 @@ PayPal = paymentmethods[0].split(",")
 Moolah = paymentmethods[1].split(", ")
 Stripe = paymentmethods[2].split(", ")
 MercadoPago = paymentmethods[3].split(", ")
-Wirecard = paymentmethods[4].split(", ")
+Wirecard = paymentmethods[4]
 Square = paymentmethods[5].split(", ")
 PagSeguro = paymentmethods[6]
 Leumi = paymentmethods[7]
@@ -39,17 +40,8 @@ for i in range(0,len(countries)):
 
 paymentmethods[8] = countries #adds every country to offline payment section
 
-##countryNames = {"United States":"Unitado",}
-##print(country)
-##i=1
-##for i in range(len(country)):
-##    if country[i] in countryNames:
-##        country = countryNames[country[i]]
-##print(country)
 
-#This following part makes a paymentmethods list 
-#this line is for the HTML table labels - includes links to each payment method
-paymentmethodsnames = ['<a href="https://www.wix.com/support/html5/article/setting-up-paypal-payments-in-wix-stores">PayPal</a>','<a href="https://www.wix.com/support/html5/article/setting-up-moolah-authorizenet-as-a-payment-gateway-in-wix-stores">Moolah</a>','<a href="https://www.wix.com/support/html5/article/setting-up-stripe-as-a-payment-gateway-in-wix-stores">Stripe</a>','<a href="https://www.wix.com/support/html5/article/setting-up-mercadopago-as-a-payment-method-in-wix-stores">MercadoPago</a>','<a href="https://www.wix.com/support/html5/article/setting-up-wirecard-as-a-payment-gateway-in-wix-stores">Wirecard</a>','<a href="https://www.wix.com/support/html5/article/setting-up-square-as-a-payment-gateway-in-wix-stores">Square</a>','<a href="https://www.wix.com/support/html5/article/setting-up-pagseguro-as-a-payment-gateway-in-wix-stores">PagSeguro</a>','<a href="https://www.wix.com/support/html5/article/setting-up-leumi-card-as-a-payment-gateway-for-wix-stores">Leumi</a>','<a href="https://www.wix.com/support/html5/article/setting-up-offline-payments-in-wix-stores">Offline</a>']
+paymentmethodsnames = ['<a href="https://www.wix.com/support/html5/article/setting-up-paypal-payments-in-wix-stores">PayPal</a>','<a href="https://www.wix.com/support/html5/article/setting-up-moolah-authorizenet-as-a-payment-gateway-in-wix-stores">Moolah</a>','<a href="https://www.wix.com/support/html5/article/setting-up-stripe-as-a-payment-gateway-in-wix-stores">Stripe</a>','<a href="https://www.wix.com/support/html5/article/setting-up-mercadopago-as-a-payment-method-in-wix-stores">MercadoPago</a>','Wirecard not','<a href="https://www.wix.com/support/html5/article/setting-up-square-as-a-payment-gateway-in-wix-stores">Square</a>','<a href="https://www.wix.com/support/html5/article/setting-up-pagseguro-as-a-payment-gateway-in-wix-stores">PagSeguro</a>','<a href="https://www.wix.com/support/html5/article/setting-up-leumi-card-as-a-payment-gateway-for-wix-stores">Leumi</a>','<a href="https://www.wix.com/support/html5/article/setting-up-offline-payments-in-wix-stores">Offline</a>']
 
 x=0
 z=0
@@ -107,4 +99,3 @@ with open("wspm.html", "w") as wspm:
     </script>
     """,file=wspm)
     print("<br>Third-party restrictions and limitations may apply.<br>If you don't see your country, or you have any feedback or questions, contact us</body></html>",file=wspm)
-
