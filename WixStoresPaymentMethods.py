@@ -45,7 +45,7 @@ paymentmethodsnames = ['<a href="https://www.wix.com/support/html5/article/setti
 
 x=0
 z=0
-with open("wspm.html", "w") as wspm:
+with open("index.html", "w") as wspm:
     print('<html><body><style>body{font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}</style>',file=wspm)
     print("Please select your country below to see our supported payment methods for Wix Stores: <br><br>",file=wspm)
     #generates the dropdown menu of all the countries we support
