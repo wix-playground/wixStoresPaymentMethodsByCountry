@@ -46,7 +46,6 @@ x=0
 z=0
 with open("index.html", "w") as wspm:
     print('<html><body><style>body{font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}</style>',file=wspm)
-    print("Please select your country below to see our supported payment methods for Wix Stores: <br><br>",file=wspm)
     #generates the dropdown menu of all the countries we support
     print('<select id="selectedcountry" onchange="optionCheck()">',file=wspm)
     for z in range(0,len(country)):
@@ -80,7 +79,7 @@ with open("index.html", "w") as wspm:
         #print("<br>",file=wspm)
         for x in range(0,len(paymentmethodsnames)):#each payment method
             if country[z] in paymentmethods[x]:
-                print('<tr><td>',paymentmethodsnames[x],'</td><td class="supported"> Supported </td></tr>',file=wspm)
+                print('<tr><td>',paymentmethodsnames[x],'</td></tr>',file=wspm)
             #else: print('<tr><td>',paymentmethodsnames[x],'</td><td class="notsupported"> Not Supported</td></tr>',file=wspm) #print current payment supported or not
         #,paymentmethodsnames[x]
         print("</table>",file=wspm)
@@ -97,4 +96,3 @@ with open("index.html", "w") as wspm:
             }
     </script>
     """,file=wspm)
-    print("<br>Third-party restrictions and limitations may apply.<br>If you don't see your country, or you have any feedback or questions, contact us</body></html>",file=wspm)
