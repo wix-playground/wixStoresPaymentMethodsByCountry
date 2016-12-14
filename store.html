@@ -1,7 +1,209 @@
-<link rel="stylesheet" type="text/css" href="https://barakplasma.github.io/wixStoresPaymentMethodsByCountry/store.css">
-<script src="https://barakplasma.github.io/wixStoresPaymentMethodsByCountry/store.js"></script>
-<select id="selectedcountry" onchange="optionCheck(this.value)"></select>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  
+  
+
+  
+  
+  
+  
+
+  <style type="text/css">
+    body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+table {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 100%;
+}
+
+td {
+  text-align: center;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid #3ba561;
+  background: #65c888;
+}
+
+th {
+  text-align: left;
+}
+
+td.supported {
+  background: #65c888;
+}
+
+td.notsupported {
+  background: red;
+}
+
+  </style>
+
+  <title></title>
+
+  
+</head>
+
+<body>
+  <select id="selectedcountry" onchange="optionCheck(this.value)"></select>
 <div id="OutputTable">
   <table id='countryTable'>
   </table>
 </div>
+
+  
+
+
+
+
+<script type='text/javascript'>//<![CDATA[
+
+var paymentMethods = {
+  Paypal: {
+    countries: "Algeria,Angola,Benin,Botswana,Burkina Faso,Burundi,Cameroon,Cape Verde,Chad,Comoros,Cote d'Ivoire,Democratic Republic of the Congo,Djibouti,Egypt,Eritrea,Ethiopia,Gabon Republic,Gambia,Guinea,Guinea-Bissau,Kenya,Lesotho,Madagascar,Malawi,Mali,Mauritania,Mauritius,Mayotte,Morocco,Mozambique,Namibia,Niger,Nigeria,Republic of the Congo,Reunion,Rwanda,Saint Helena,Sao Tome and Principe,Senegal,Seychelles,Sierra Leone,Somalia,South Africa,Swaziland,Tanzania,Togo,Tunisia,Uganda,Zambia,Zimbabwe,Anguilla,Antigua and Barbuda,Argentina,Aruba,Bahamas,Barbados,Belize,Bermuda,Bolivia,Brazil,British Virgin Islands,Canada,Cayman Islands,Chile,Colombia,Costa Rica,Dominica,Dominican Republic,Ecuador,El Salvador,Falkland Islands,French Guiana,Greenland,Grenada,Guadeloupe,Guatemala,Guyana,Honduras,Jamaica,Martinique,Mexico,Montserrat,Netherlands Antilles,Nicaragua,Panama,Paraguay,Peru,Saint Kitts and Nevis,Saint Lucia,Saint Pierre and Miquelon,Saint Vincent and the Grenadines,Suriname,Trinidad and Tobago,Turks and Caicos,United States,Uruguay,Venezuela,Armenia,Australia,Bahrain,Bhutan,Brunei,Cambodia,China,Cook Islands,Fiji,French Polynesia,Hong Kong,India,Indonesia,Israel,Japan,Jordan,Kazakhstan,Kiribati,Kuwait,Kyrgyzstan,Laos,Malaysia,Maldives,Marshall Islands,Federated States of Micronesia,Mongolia,Nauru,Nepal,New Caledonia,New Zealand,Niue,Norfolk Island,Oman,Palau,Papua New Guinea,Philippines,Pitcairn Islands,Qatar,Samoa,Saudi Arabia,Singapore,Solomon Islands,South Korea,Sri Lanka,Taiwan,Tajikistan,Thailand,Tonga,Turkmenistan,Tuvalu,United Arab Emirates,Vanuatu,Vietnam,Wallis and Futuna,Yemen,Albania,Andorra,Austria,Azerbaijan Republic,Belarus,Belgium,Bosnia and Herzegovina,Bulgaria,Croatia,Cyprus,Czech Republic,Denmark,Estonia,Faroe Islands,Finland,France,Georgia,Germany,Gibraltar,Greece,Hungary,Iceland,Ireland,Italy,Latvia,Liechtenstein,Lithuania,Luxembourg,Macedonia,Malta,Moldova,Monaco,Montenegro,Netherlands,Norway,Poland,Portugal,Romania,Russia,San Marino,Serbia,Slovakia,Slovenia,Spain,Svalbard and Jan Mayen,Sweden,Switzerland,Ukraine,United Kingdom,Vatican City" /*https://www.paypal.com/pn/webapps/mpp/country-worldwide ; a = document.getElementsByClassName('country') ; var arr = [].slice.call(a); var c = [] ; for(let i = 0; i<203; i++){c.push(arr[i].innerText)} ; copy(c.toString()); */ ,
+    url: "https://www.wix.com/support/html5/article/setting-up-paypal-payments-in-wix-stores"
+  },
+  Moolah: {
+    countries: "United States,Canada,United Kingdom,Australia",
+    url: "https://www.wix.com/support/html5/article/setting-up-moolah-authorizenet-as-a-payment-gateway-in-wix-stores"
+  },
+  Stripe: {
+    countries: "Austria,Australia,Belgium,Canada,Germany,Denmark,Spain,France,United Kingdom,Ireland,Italy,Luxembourg,Netherlands,Norway,Sweden,United States,Japan*",
+    url: "https://www.wix.com/support/html5/article/setting-up-stripe-as-a-payment-gateway-in-wix-stores"
+  },
+  MercadoPago: {
+    countries: "Argentina,Brazil,Colombia,Mexico,Venezuela,Chile",
+    url: "https://www.wix.com/support/html5/article/setting-up-mercadopago-as-a-payment-method-in-wix-stores"
+  },
+  Leumi: {
+    countries: "Israel",
+    url: "https://www.wix.com/support/html5/article/setting-up-leumi-card-as-a-payment-gateway-for-wix-stores"
+  },
+  Square: {
+    countries: "United States,Canada",
+    url: "https://www.wix.com/support/html5/article/setting-up-square-as-a-payment-gateway-in-wix-stores"
+  },
+  FatZebra: {
+    countries: "Australia",
+    url: "https://www.wix.com/support/html5/article/setting-up-fat-zebra-as-a-payment-method-in-wix-stores"
+  },
+  DengiOnline: {
+    countries: "Russia",
+    url: "https://www.wix.com/support/html5/article/setting-up-dengionline-as-a-payment-method-in-wix-stores"
+  },
+  PagueloFacil: {
+    countries: "Panama",
+    url: "https://www.wix.com/support/html5/article/setting-up-paguelofacil-as-a-payment-method-in-wix-stores"
+  },
+  PaymentExpress: {
+    countries: "Australia,New Zealand,Singapore,Hong Kong,Malaysia",
+    url: "https://www.wix.com/support/html5/article/setting-up-payment-express-as-a-payment-method-in-wix-stores"
+  },
+  Braintree: {
+    countries: "Australia,Hong Kong,Malaysia,Singapore,New Zealand,Turkey",
+    url: "https://www.wix.com/support/html5/article/setting-up-braintree-as-a-payment-gateway-in-wix-stores"
+  },
+  eWay: {
+    countries: "Hong Kong,Malaysia,New Zealand,Singapore",
+    url: "https://www.wix.com/support/html5/article/setting-up-eway-as-a-payment-gateway-in-wix-stores"
+  },
+  PagSeguro: {
+    countries: 'Brazil',
+    url: 'https://www.wix.com/support/html5/article/setting-up-pagseguro-as-a-payment-gateway-in-wix-stores'
+  },
+
+}
+var allCountriesArr = new Array();
+var allPaymentMethods = new Array();
+var payMethObj = {};
+
+for (let method in paymentMethods) { //generate payMethObj, which is a list of pay methods and arrays of the countries
+  allCountriesArr.push(paymentMethods[method].countries.split(','));
+  allPaymentMethods.push(method);
+  payMethObj[method] = paymentMethods[method].countries.split(',');
+}
+//console.log(payMethObj);
+var merged = [].concat.apply([], allCountriesArr); //change to use concat?
+var deduped = merged.filter((el, pos) => merged.indexOf(el) === pos); //needs a comment
+deduped.sort();
+
+var selCoun = document.getElementById("selectedcountry");
+
+for (let country in deduped) {
+  var option = document.createElement("option");
+  option.text = deduped[country];
+  selCoun.add(option);
+}
+var table = document.getElementById(countryTable);
+
+function optionCheck(sel) {
+  //document.getElementById("paymentMethod").innerHTML = sel;
+  resetTable();
+  genPayList(sel);
+}
+
+function genPayList(sel) {
+  //here we will check the country specified against payMethObj to see which arrays have that country
+  for (let method in payMethObj) {
+    if (payMethObj[method].includes(sel)) {
+      addRow(method);
+    }
+    //console.log(sel,method,payMethObj[method].includes(sel));
+  }
+  //if a country matchs a payMethod, then call addRow
+}
+
+var table = document.getElementById('countryTable');
+
+function addRow(method) { //here, write a function which adds a new row to the paymentMethod div
+  //pay attnetion to formatting
+  //thanks to https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/insertRow
+  // Insert a row in the table at row index 0
+  var newRow = table.insertRow(0);
+
+  // Insert a cell in the row at index 0
+  var newCell = newRow.insertCell(0);
+
+  // Append a text node to the cell
+  var link = document.createElement("a");
+  link.setAttribute("href", paymentMethods[method].url)
+  var linkText = document.createTextNode(method);
+  link.appendChild(linkText);
+
+  // Add the link to the previously created TableCell.
+  newCell.appendChild(link);
+  /*
+    var newText = document.createTextNode(method);
+    newCell.appendChild(newText);
+  */
+}
+
+function resetTable() {
+  while (table.firstChild) {
+    table.removeChild(table.firstChild); //thanks to http://stackoverflow.com/a/3955238
+  }
+}
+
+//]]> 
+
+</script>
+
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "3d3f0qzf"
+    }], "*")
+  }
+</script>
+
+</body>
+
+</html>
+
