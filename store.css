@@ -1,0 +1,28 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+table {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 100%;
+}
+
+td {
+  text-align: center;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid #3ba561;
+  background: #65c888;
+}
+
+th {
+  text-align: left;
+}
+
+td.supported {
+  background: #65c888;
+}
+
+td.notsupported {
+  background: red;
+}
