@@ -116,6 +116,10 @@ var paymentMethods = {
     countries: 'Brazil',
     url: 'https://www.wix.com/support/html5/article/setting-up-pagseguro-as-a-payment-gateway-in-wix-stores'
   },
+  Offline: {
+    countries: '_Other Countries',
+    url: 'https://www.wix.com/support/html5/article/setting-up-offline-payments-in-wix-stores'
+  }
 
 }
 var allCountriesArr = new Array();
@@ -152,6 +156,7 @@ function genPayList(sel) {
   for (let method in payMethObj) {
     if (payMethObj[method].includes(sel)) {
       addRow(method);
+      addRow(Offline);
     }
     //console.log(sel,method,payMethObj[method].includes(sel));
   }
