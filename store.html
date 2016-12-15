@@ -4,14 +4,6 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-  
-  
-
-  
-  
-  
-  
-
   <style type="text/css">
     body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -116,7 +108,7 @@ var paymentMethods = {
     url: 'https://www.wix.com/support/html5/article/setting-up-pagseguro-as-a-payment-gateway-in-wix-stores'
   },
   Offline: {
-    countries: '_Other Countries',
+    countries: '_Other Countries,India,South Africa',
     url: 'https://www.wix.com/support/html5/article/setting-up-offline-payments-in-wix-stores'
   }
 
@@ -155,7 +147,7 @@ function genPayList(sel) {
 	addRow('Offline');
   //here we will check the country specified against payMethObj to see which arrays have that country
   for (let method in payMethObj) {
-    if (payMethObj[method].includes(sel)) {
+    if (payMethObj[method].includes(sel) && method !== 'Offline') {
       addRow(method);
     }
     //console.log(sel,method,payMethObj[method].includes(sel));
@@ -190,8 +182,6 @@ function resetTable() {
     table.removeChild(table.firstChild); //thanks to http://stackoverflow.com/a/3955238
   }
 }
-
-
 //]]> 
 
 </script>
