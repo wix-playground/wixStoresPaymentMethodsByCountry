@@ -156,7 +156,7 @@ function genPayList(sel) {
   for (let method in payMethObj) {
     if (payMethObj[method].includes(sel)) {
       addRow(method);
-      addRow(Offline);
+      addRow(payMethObj[Offline]);
     }
     //console.log(sel,method,payMethObj[method].includes(sel));
   }
